@@ -17,49 +17,49 @@ if (!firebase.apps.length) {
 }
 // Get a reference to the storage service, which is used to create references in your storage bucket
 var db = firebase.firestore();
+window.onload = () => {
+  document.getElementById("articles").innerHTML = marked(
+    "# Loading page!\n### Patience is a virtue"
+  );
 
-document.getElementById("articles").innerHTML = marked(
-  "# Loading page!\n### Patience is a virtue"
-);
-
-if (!quickwrite) {
-  db.collection("articles")
-    .orderBy("ts")
-    .limit(3)
-    .get()
-    .then(doc => {
-      //console.log(doc);
-      if (doc.empty) return;
-      console.log(doc);
-      //return;
-      //console.log(doc.docs);
-      window.globalTest = doc.docs;
-      var newHtml = "";
-      //data = res.data;
-      for (var i = 0; i < doc.docs.length; i++) {
-        var post = doc.docs[i];
-        var postData = post.data();
+  if (!quickwrite) {
+    db.collection("articles")
+      .orderBy("ts")
+      .limit(3)
+      .get()
+      .then(doc => {
+        //console.log(doc);
+        if (doc.empty) return;
+        console.log(doc);
+        //return;
         //console.log(doc.docs);
-        var authorName = postData.author;
-        newHtml +=
-          '<div class="report"><header-report>' +
-          postData.title +
-          "</header-report><hr/><author-report>Written By " +
-          authorName +
-          "</author-report><hr/><p>" +
-          postData.firstText +
-          '<a href="/post.html?&title=' +
-          postData.title +
-          "&author=" +
-          authorName +
-          "&content=" +
-          postData.md +
-          '">Read More</a></p></div>';
-        document.getElementById("articles").innerHTML = newHtml;
-      }
-    });
+        window.globalTest = doc.docs;
+        var newHtml = "";
+        //data = res.data;
+        for (var i = 0; i < doc.docs.length; i++) {
+          var post = doc.docs[i];
+          var postData = post.data();
+          //console.log(doc.docs);
+          var authorName = postData.author;
+          newHtml +=
+            '<div class="report"><header-report>' +
+            postData.title +
+            "</header-report><hr/><author-report>Written By " +
+            authorName +
+            "</author-report><hr/><p>" +
+            postData.firstText +
+            '<a href="/post.html?&title=' +
+            postData.title +
+            "&author=" +
+            authorName +
+            "&content=" +
+            postData.md +
+            '">Read More</a></p></div>';
+          document.getElementById("articles").innerHTML = newHtml;
+        }
+      });
 
-  /*fetchData({
+    /*fetchData({
     query: "{posts(first:100){summary,authorID,title,id}authors{id,name}}"
   }).then(res => {
     window.globalTest = res.data;
@@ -88,4 +88,5 @@ if (!quickwrite) {
     }
     console.log("a");
   });*/
-}
+  }
+};
