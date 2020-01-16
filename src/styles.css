@@ -1,0 +1,61 @@
+@media only screen and (min-width: 800px) {
+  .report {
+    width: 40% !important;
+    display: block !important;
+    float: left !important;
+  }
+  .mainContent {
+    width: 60% !important;
+    padding-left: 20% !important;
+  }
+}
+body {
+  font-family: "Times New Roman", serif;
+  width: 99%;
+}
+
+header {
+  font-size: 3em;
+  font-family: "Playfair Display";
+  font-weight: 900;
+  text-align: center;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid black;
+}
+
+.report {
+  margin-left: 2em;
+  margin-right: 2em;
+  border: 2px solid black;
+  font-size: 1.5rem;
+  display: block;
+  height: 300px;
+  margin-bottom: 10px;
+  width: 90%;
+}
+
+header-report {
+  font-size: 2rem;
+  font-family: "Playfair Display";
+  text-align: center;
+  font-weight: 700;
+  width: 100%;
+  display: inline-block;
+}
+
+author-report {
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.mainContent {
+  width: 90%;
+  margin-left: 5%;
+}
